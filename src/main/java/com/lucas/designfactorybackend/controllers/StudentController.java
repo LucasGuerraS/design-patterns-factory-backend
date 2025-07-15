@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -54,5 +56,23 @@ public class StudentController {
     @RequestMapping("/email/{email}")
     public ResponseEntity<Student> findByEmail(@PathVariable String email) {
         return ResponseEntity.ok(studentService.findByEmail(email));
+    }
+
+    @PostMapping
+    @RequestMapping("/login")
+    public ResponseEntity<Boolean> login(@RequestBody Student student) {
+        return ResponseEntity.ok(studentService.login(student.getEmail(), student.getPassword()));
+    }
+
+    @PostMapping
+    @RequestMapping("/class/{category}")
+    public ResponseEntity<Integer> classStudent(@RequestBody Map<String, Integer> body, @PathVariable Integer category) {
+        return ResponseEntity.ok(studentService.completeClass(body.get("id"), category));
+    }
+
+    @PostMapping
+    @RequestMapping("/certificate")
+    public ResponseEntity<Boolean> certificate(@RequestBody Map<String, Integer> body) {
+        return ResponseEntity.ok(studentService.emitCertificate(body.get("id")));
     }
 }

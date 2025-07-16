@@ -10,11 +10,19 @@ services:
     ports:
       - '5432:5432'
 
-  # TODO: remove pg_admin after tests
-  adminer:
-    container_name: 'pg_admin'
-    image: 'adminer'
-    restart: 'always'
+  app:
+    image: 'spring_designfactory:1.2.0'
+    container_name: 'spring_app'
+    restart: 'no'
+    environment:
+      DB_HOST: 'db'
+      DB_USER: 'dev'
+      DB_PASS: 'example'
     ports:
-      - '8000:8080'
+      - '8080:8080'
+    links:
+      - db
+    depends_on:
+      - db
+
 

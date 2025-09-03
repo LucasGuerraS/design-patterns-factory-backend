@@ -11,7 +11,7 @@ services:
       - '5432:5432'
 
   app:
-    image: 'spring_designfactory:1.2.0'
+    image: 'lucasguerras/spring-designfactory:1.2.0'
     container_name: 'spring_app'
     restart: 'no'
     environment:

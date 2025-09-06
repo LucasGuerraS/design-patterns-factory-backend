@@ -40,9 +40,9 @@ public class StudentService {
         return studentRepository.findByEmail(email);
     }
 
-    public Boolean login(String email, String password) {
+    public Integer login(String email, String password) {
         Student student = studentRepository.findByEmail(email);
-        return student != null && student.getPassword().equals(password);
+        return student != null && student.getPassword().equals(password) ? student.getId() : null;
     }
 
     public Integer completeClass(Integer id, Integer category) {

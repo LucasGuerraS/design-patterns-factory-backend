@@ -60,7 +60,7 @@ public class StudentController {
 
     @PostMapping
     @RequestMapping("/login")
-    public ResponseEntity<Boolean> login(@RequestBody Student student) {
+    public ResponseEntity<Integer> login(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.login(student.getEmail(), student.getPassword()));
     }
 

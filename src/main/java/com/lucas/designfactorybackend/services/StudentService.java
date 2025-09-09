@@ -63,7 +63,12 @@ public class StudentService {
                 student.setExperience(student.getExperience() + 1);
                 yield studentRepository.save(student).getProgress_c();
             }
-            default -> id;
+            case 4 -> {
+                student.setProgress_d(student.getProgress_d() + 1);
+                student.setExperience(student.getExperience() + 1);
+                yield studentRepository.save(student).getProgress_d();
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + category);
         };
     }
 

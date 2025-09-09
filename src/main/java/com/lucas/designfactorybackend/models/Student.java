@@ -44,5 +44,9 @@ public class Student {
 
     @Setter
     @Getter
+    private Integer progress_d;
+
+    @Setter
+    @Getter
     private Boolean certificate;
 }

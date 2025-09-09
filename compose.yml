@@ -25,4 +25,17 @@ services:
     depends_on:
       - db
 
+  front:
+    image: 'lucasguerras/next-designfactory:1.0.0'
+    container_name: 'next_app'
+    restart: 'no'
+    environment:
+      API_ENDPOINT: 'app'
+    ports:
+      - '3000:3000'
+    links:
+      - app
+    depends_on:
+      - app
+
 
